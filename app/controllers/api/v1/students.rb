@@ -5,25 +5,31 @@ module API
 
       resource :students do
         desc "Return all students"
-        get "", root: :students do
-          Student.all
-        end
-
-        desc "Return a student"
         params do
-          requires :id, type: String, desc: "ID of the student"
+          optional :city, type: String, desc: "City of the student (Houston, Austin, Atlanta, Greenville, Charleston, Orlando, Tampa, Washington DC)"
         end
-        get ":id", root: "student" do
-          Student.where(id: permitted_params[:id]).first!
+        params do
+          optional :course, type: String, desc: "Course for student (Rails, JS, Mobile, UI, Python)"
+        end
+        get "", root: :students do
+
+          query = Student.all
+          query = query.where(city: permitted_params[:city]) if permitted_params[:city].present?
+          query = query.where(course: permitted_params[:course]) if permitted_params[:course].present?
+
+          query
         end
 
-        # desc "Return a city"
+
+        # desc "Return a student"
         # params do
-        #   requires :city, type: String, desc: "City of the student"
+        #   requires :id, type: String, desc: "ID of the student"
         # end
-        # get ":city", root: "student" do
-        #   Student.find(id: permitted_params[:city])
+        # get ":id", root: "student" do
+        #   Student.where(id: permitted_params[:id]).first!
         # end
+
+
 
       end
     end
