@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150623223053) do
+ActiveRecord::Schema.define(version: 20150708190751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,13 @@ ActiveRecord::Schema.define(version: 20150623223053) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "cohorts", force: :cascade do |t|
+    t.string   "name"
+    t.string   "city"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "contacts", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -58,11 +65,11 @@ ActiveRecord::Schema.define(version: 20150623223053) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "parents", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "title"
+  create_table "projects", force: :cascade do |t|
+    t.string   "app_name"
+    t.string   "app_url"
+    t.string   "rationale"
+    t.string   "tech_used"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -73,14 +80,15 @@ ActiveRecord::Schema.define(version: 20150623223053) do
     t.string   "portfolio_url"
     t.string   "email"
     t.string   "github_url"
-    t.string   "app_name"
-    t.string   "app_url"
-    t.string   "rationale"
-    t.string   "tech_used"
     t.string   "profile_pic_link"
     t.string   "city"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.boolean  "group_project"
+    t.integer  "project_id"
+    t.integer  "cohort_id"
   end
+
+  add_index "students", ["group_project"], name: "index_students_on_group_project", using: :btree
 
 end

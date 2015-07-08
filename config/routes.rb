@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :students
+  resources :students, only: [:create, :new, :edit, :show, :update]
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   mount API::Base, at: "/"

@@ -25,8 +25,8 @@
   <div class="control-group">
     <%= f.label :course, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :course, :class => 'form-control' %>
-    </div>
+        <%= f.select(:course, options_for_select([['Front End Engineering'], ['Rails Engineering'], ['Mobile Engineering'], ['UI']]), {:prompt => "Select Your Course"}, {class: "form-control"}) %>
+      </div>
     <%= error_span(@student[:course]) %>
   </div>
   <div class="control-group">
@@ -67,14 +67,14 @@
   <div class="control-group">
     <%= f.label :rationale, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :rationale, :class => 'form-control' %>
+      <%= f.text_area :rationale, :class => 'form-control' %>
     </div>
     <%= error_span(@student[:rationale]) %>
   </div>
   <div class="control-group">
     <%= f.label :tech_used, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :tech_used, :class => 'form-control' %>
+      <%= f.text_area :tech_used, :class => 'form-control' %>
     </div>
     <%= error_span(@student[:tech_used]) %>
   </div>
@@ -85,16 +85,33 @@
     </div>
     <%= error_span(@student[:profile_pic_link]) %>
   </div>
+
   <div class="control-group">
     <%= f.label :city, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :city, :class => 'form-control' %>
-    </div>
+      <%= f.select(:city, options_for_select([['Atlanta'], ['Austin'], ['Charleston'], ['Columbia'],['Durham'], ['Greenville'], ['Houston'], ['Indianapolis'], ['Las Vegas'], ['Little Rock'], ['Nashville'], ['Orlando'], ['Tampa'], ['Washington DC']]), {:prompt => "Select Your City"}, {class: "form-control"}) %>
+      </div>
     <%= error_span(@student[:city]) %>
   </div>
 
 
-  <%= f.submit nil, :class => 'btn btn-primary' %>
 
+  <br>
+  <br>
+
+  <%= f.label :group_project do %>
+    <%= f.check_box :group_project %>
+    This a group project.
+  <% end %>
+<br>
+<br>
+
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <br>
+  <br>
+  <br>
+  <br>
 
 <% end %>
