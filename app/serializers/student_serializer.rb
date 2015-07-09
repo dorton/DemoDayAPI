@@ -3,7 +3,7 @@ class StudentSerializer < ActiveModel::Serializer
   :tech_used, :profile_pic_link, :group_project, :created_at, :updated_at
 
   def cohort
-    object.cohort.name
+    object.project.cohort.name
   end
 
   def group_project
@@ -11,7 +11,7 @@ class StudentSerializer < ActiveModel::Serializer
   end
 
   def city
-    object.cohort.city
+    object.project.cohort.city
   end
 
   def app_name

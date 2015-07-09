@@ -5,6 +5,8 @@ module API
     class Base < Grape::API
 
       mount API::V1::Students
+      mount API::V1::Projects
+      mount API::V1::Cohorts
 
       # mount API::V1::AnotherResource
 

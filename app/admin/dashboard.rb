@@ -14,10 +14,10 @@ ActiveAdmin.register_page "Dashboard" do
     #
     columns do
       column do
-        panel "Recent Students" do
+        panel "25 Recent Students" do
           ul do
-            Student.last(5).map do |student|
-              li link_to(student.name, student_path(student))
+            Student.last(25).map do |student|
+              li student.name
             end
           end
         end

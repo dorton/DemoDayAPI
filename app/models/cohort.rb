@@ -1,6 +1,8 @@
 class Cohort < ActiveRecord::Base
-  has_many :students
-  has_many :projects, through: :students
+
+  has_many :projects
+
+  validates :city, :name, presence: true
 
 
   def display_name
