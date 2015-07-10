@@ -31,13 +31,29 @@ module API
         end
 
 
-        # desc "Return a student"
-        # params do
-        #   requires :id, type: String, desc: "ID of the student"
-        # end
-        # get ":id", root: "student" do
-        #   Student.where(id: permitted_params[:id]).first!
-        # end
+        desc "Return a student"
+        params do
+          requires :id, type: String, desc: "ID of the student"
+        end
+        get ":id", root: "student" do
+          Student.where(id: permitted_params[:id]).first!
+        end
+
+        desc "Create a Student"
+        post do
+
+          Student.create!({
+            name: params[:student][:name],
+            email: params[:student][:email],
+            portfolio_url: params[:student][:portfolio_url],
+            github_url: params[:student][:github_url],
+            profile_pic_link: params[:student][:profile_pic_link],
+            course: params[:student][:course],
+            project_id: params[:student][:project]
+
+
+          })
+        end
 
 
 

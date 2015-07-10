@@ -15,6 +15,11 @@ module API
           query
         end
 
+        desc "Return a specific cohort"
+        get ":id", root: :cohort do
+          Cohort.find params[:id]
+        end
+
 
         # desc "Return a student"
         # params do

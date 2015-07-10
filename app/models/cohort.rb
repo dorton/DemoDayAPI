@@ -2,11 +2,11 @@ class Cohort < ActiveRecord::Base
 
   has_many :projects
 
-  validates :city, :name, presence: true
+  validates :city, :demo_day_date, presence: true
 
 
   def display_name
-    [city, name].join("-")
+    [city, demo_day_date].join("-")
   end
 
 end
