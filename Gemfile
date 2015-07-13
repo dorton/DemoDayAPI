@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+ruby '2.2.0'
+
 gem "rails", "4.2.1"
 
 gem "activeadmin", github: "gregbell/active_admin" # Until it"s 1.0.0
@@ -16,6 +18,11 @@ gem "sass-rails"
 gem "uglifier", ">= 1.3.0"
 gem 'turbolinks'
 gem "twitter-bootstrap-rails"
+
+group :production do
+
+  gem 'rails_12factor'
+end
 
 group :development do
   gem "better_errors"
