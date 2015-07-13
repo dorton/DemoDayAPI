@@ -19,8 +19,18 @@ module API
           query = Student.all
 
           if permitted_params[:city].present?
-            cities = Cohort.where city: params[:city]
-            query = query.where(cohort_id: cities.pluck(:id))
+            # cities = Cohort.where city: params[:city]
+            # project_ids = Project.where(cohort_id: cities.pluck(:id))
+            # query = query.where(project_id: project_ids)
+
+            # Following joins project to cohort and runs the following SQL:
+            # SELECT "students".* FROM "students"
+            #   INNER JOIN "projects" ON "projects"."id" = "students"."project_id"
+            #   INNER JOIN "cohorts" ON "cohorts"."id" = "projects"."cohort_id"
+            #   WHERE "cohorts"."city" = 'Houston'
+
+            query = query.joins(:project => :cohort).where("cohorts.city" => params[:city])
+
           end
 
 
