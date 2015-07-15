@@ -6,6 +6,8 @@ ActiveAdmin.setup do |config|
   #
   config.site_title = "Demo Day Site Data"
 
+  config.root_to = 'students#index'
+
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
   #
