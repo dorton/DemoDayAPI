@@ -21,7 +21,7 @@ class StudentSerializer < ActiveModel::Serializer
   end
 
   def demo_day_date
-    object.project.cohort.demo_day_date
+    object.project.cohort.demo_day_date.strftime("%b %d, %Y")
   end
 
   def group_project

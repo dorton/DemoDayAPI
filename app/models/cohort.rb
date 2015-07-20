@@ -6,7 +6,7 @@ class Cohort < ActiveRecord::Base
 
 
   def display_name
-    [city, demo_day_date].join("-")
+    [city, demo_day_date.strftime("%b %d, %Y")].join("-")
   end
 
 end

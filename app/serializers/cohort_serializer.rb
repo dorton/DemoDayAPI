@@ -10,6 +10,9 @@ has_many :projects
   #   object.projects.order(:app_name).pluck(:id)
   # end
 
+  def demo_day_date
+    object.demo_day_date.strftime("%b %d, %Y")
+  end
 
 
 
