@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby '2.2.0'
 
 gem "rails", "4.2.1"
-
+gem 'puma'
 gem "activeadmin", github: "gregbell/active_admin" # Until it"s 1.0.0
 gem "active_admin_import" , '2.1.2'
 gem "coffee-rails", "~> 4.0.0"
