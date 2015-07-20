@@ -5,14 +5,15 @@ module API
 
       resource :cohorts do
         desc "Return all cohorts"
-        # params do
-        #   optional :group_project, type: Boolean, desc: "See Group Projects"
-        # end
+          params do
+            optional :city, type: String, desc: "Cohort city (Houston, Austin, Atlanta, Greenville, Charleston, Orlando, Tampa, Washington DC)"
+          end
         get "", root: :cohorts do
 
-          query = Cohort.all
-
+          query = Cohort.all.includes(:projects => :students)
+          query = query.where(city: permitted_params[:city]) if permitted_params[:city].present?
           query
+
         end
 
         desc "Return a specific cohort"

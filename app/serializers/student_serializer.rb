@@ -1,4 +1,5 @@
 class StudentSerializer < ActiveModel::Serializer
+
   attributes :id, :name, :course, :demo_day_date, :city, :portfolio_url, :email, :github_url, :app_name, :app_url, :rationale,
   :tech_used, :profile_pic_link, :group_project, :venue_name, :venue_street,
   :created_at, :updated_at, :venue_city, :venue_zip

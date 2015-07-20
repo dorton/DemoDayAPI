@@ -1,10 +1,10 @@
-AdminUser.create! email: "admin@example.com", password: "12345678", password_confirmation: "12345678"
+# AdminUser.create! email: "admin@example.com", password: "12345678", password_confirmation: "12345678"
 
 require 'faker'
 
 ["Houston", "Austin", "Orlando", "Atlanta", "Tampa", "Washington DC", "Greenville", "Durham", "Nashville", "Charleston", "Columbia"].each do |city_name|
 
-  Cohort.create! city: city_name, name: ["July 24, 2015", "September 4, 2015", "September 8, 2015", "October 20, 2015"].sample
+  Cohort.create! city: city_name, demo_day_date: ["July 24, 2015", "September 4, 2015", "September 8, 2015", "October 20, 2015"].sample
 
 end
 
