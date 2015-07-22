@@ -59,6 +59,7 @@ module API
             github_url: params[:student][:github_url],
             profile_pic_link: params[:student][:profile_pic_link],
             course: params[:student][:course],
+            bio: params[:student][:bio],
             project_id: params[:student][:project]
 
 
