@@ -17,7 +17,6 @@ permit_params :name, :course, :portfolio_url, :email, :github_url, :app_name, :a
     column "project" do |student| link_to student.project.app_name,  [:admin, student.project] end
     column "# In Project" do |student| student.project.students.count end
     column "cohort" do |student| student.project.cohort.city end
-    column "bio" do |student| student.bio end
     column "photo"  do |student|  image_tag student.profile_pic_link, class: "img-thumbnail" end
     actions
 
