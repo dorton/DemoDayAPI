@@ -69,6 +69,6 @@ class StudentsController < InheritedResources::Base
 
 
     def student_params
-      params.require(:student).permit(:name, :course, :portfolio_url, :email, :github_url, :app_name, :app_url, :rationale, :tech_used, :profile_pic_link, :city, :group_project, :bio)
+      params.require(:student).permit(:name, :course, :portfolio_url, :email, :github_url, :app_name, :app_url, :rationale, :tech_used, :profile_pic_link, :city, :group_project)
     end
 end

@@ -12,8 +12,8 @@ has_many :students
   #   object.students.pluck(:id)
   # end
 
-  def app_name
-    object.app_name.titleize
-  end
+  # def app_name
+  #   object.app_name.titleize
+  # end
 
 end
