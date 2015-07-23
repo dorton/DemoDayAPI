@@ -4,6 +4,14 @@ class ProjectSerializer < ActiveModel::Serializer
 
 has_many :students
 
+  def url_with_protocol(url)
+    /^http/i.match(url) ? url : "http://#{url}"
+  end
+
+  def app_url
+    url_with_protocol(object.app_url)
+  end
+
   def cohort
     object.cohort_id
   end
