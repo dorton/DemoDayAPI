@@ -19,6 +19,7 @@ permit_params :name, :course, :portfolio_url, :email, :github_url, :app_name, :a
     column "cohort" do |student| student.project.cohort.city end
     column :bio
     column "photo"  do |student|  image_tag student.profile_pic_link, class: "img-thumbnail" end
+    column :dont_publish_student
     actions
 
   end

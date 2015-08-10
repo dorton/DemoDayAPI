@@ -1,6 +1,6 @@
 class ProjectSerializer < ActiveModel::Serializer
 
-  attributes :id, :app_name, :cohort, :app_url, :rationale, :tech_used, :students, :dont_publish
+  attributes :id, :app_name, :cohort, :app_url, :rationale, :tech_used, :students, :dont_publish_project
 
 has_many :students
 
