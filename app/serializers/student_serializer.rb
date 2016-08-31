@@ -4,9 +4,9 @@ class StudentSerializer < ActiveModel::Serializer
   :tech_used, :profile_pic_link, :group_project, :venue_name, :venue_street,
   :created_at, :updated_at, :venue_city, :venue_zip, :bio, :dont_publish_student, :cohort_id
 
-  def url_with_protocol(url)
-    /^http/i.match(url) ? url : "http://#{url}"
-  end
+  # def url_with_protocol(url)
+  #   /^http/i.match(url) ? url : "http://#{url}"
+  # end
 
   def cohort_id
     object.project.cohort.id
