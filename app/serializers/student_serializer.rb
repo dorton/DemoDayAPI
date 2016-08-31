@@ -4,7 +4,7 @@ class StudentSerializer < ActiveModel::Serializer
   :tech_used, :profile_pic_link, :group_project, :venue_name, :venue_street,
   :created_at, :updated_at, :venue_city, :venue_zip, :bio, :dont_publish_student, :cohort_id
 
-  # def url_with_protocol(url)
+  # def (url)
   #   /^http/i.match(url) ? url : "http://#{url}"
   # end
 
@@ -45,7 +45,7 @@ class StudentSerializer < ActiveModel::Serializer
   end
 
   def app_url
-    url_with_protocol(object.project.app_url)
+    object.project.app_url
   end
 
   def rationale
@@ -57,15 +57,15 @@ class StudentSerializer < ActiveModel::Serializer
   end
 
   def portfolio_url
-    url_with_protocol(object.portfolio_url)
+    object.portfolio_url
   end
 
   def github_url
-    url_with_protocol(object.github_url)
+    object.github_url
   end
 
   def profile_pic_link
-    url_with_protocol(object.profile_pic_link)
+    object.profile_pic_link
   end
 
 end
