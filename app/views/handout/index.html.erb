@@ -1,0 +1,149 @@
+<div class="grid grid-2-640 ">
+    <div class="vslide c">
+        <h1 class="tera">Demo
+            <br>Day</h1>
+        <h3><%= "The Iron Yard"%></h3>
+      <p> <%= city_demo_date('Houston').first %> </p>
+
+
+
+        <%= image_tag "iron-yard-logo.svg", style: "preserveAspectRatio=MinYMin slice" %>
+        <br>
+        <br>
+        <h3><%= "Houston"%></h3>
+    </div>
+
+    <div class="vslide">
+        <h4>About The Iron Yard</h4>
+
+        <p>The Iron Yard teaches intensive, three-month courses that mentor students into professional junior-level
+          programmers. Our program goes far beyond tactical skills and teaches students to think like a software engineer.
+          Students have spent the past twelve weeks studying <%= all_courses('houston').to_sentence %> and
+          today they will present their final projects, which showcase the skills they have learned.</p>
+
+        <%= image_tag "#{image_name_for_city('Houston')}", :class => "about-img about-container" %>
+
+    </div>
+</div>
+
+<div class="grid">
+    <div>
+        <h4 class="hideable">Interested in hiring a graduate?</h4>
+
+        <p class="hideable"> <%= "All of our graduates are ready for their first jobs as junior developers. If you meet someone who
+        would be a great fit for your team, please feel free to reach out to them directly. Graduates' contact info can be found here.
+        If you have questions or want more information about how our job placement program works, get in touch with the houston team
+        at "%><%= mail_to "houston@theironyard.com" %>.</p>
+
+
+    </div>
+</div>
+
+<div class="grid hideable page-break-after">
+    <div>
+        <h4>Interested in taking a class or learning more?</h4>
+
+        <p>Our next classes begin September 26, 2016. We are accepting applications now. Applications can be found on our website:
+          <a href="http://theironyard.com/apply" target="_blank">theironyard.com/apply</a>. We also offer free classes for kids
+          and host a variety of meet-ups and free events. For more information on any of these programs, visit our website or
+          email <%= mail_to "houston@theironyard.com" %>.</p>
+
+    </div>
+</div>
+<%if all_students.select {|c| c.city == "Houston"}.empty? %>
+<h2>Check Back Soon For Developer Profiles</h2>
+<% else %>
+<div>
+  <h3>The <%= "Houston" %>Developers</h3>
+</div>
+
+<% if rails.select {|c| c.city == "Houston"}.empty? %>
+<% else %>
+<div>
+    <h4>Back End Engineering</h4>
+</div class="page-break-before">
+<div class="grid grid-2-640 projects">
+
+  <% rails.select {|c| c.city == "Houston"}.each do |response| %>
+    <%= render :partial => "project", locals: {response: response} %>
+  <% end %>
+  <% end  %>
+</div>
+
+
+<% if js.select {|c| c.city == "Houston"}.empty? %>
+<% else %>
+
+<div class="page-break-before">
+    <h4>Front End Engineering</h4>
+</div>
+<div class="grid grid-2-640 projects">
+
+
+  <% js.select {|c| c.city == "Houston"}.each do |response| %>
+    <%= render :partial => "project", locals: {response: response} %>
+  <% end %>
+</div>
+<% end %>
+
+<% if python.select {|c| c.city == "Houston"}.empty? %>
+
+<% else %>
+<div class="page-break-before">
+    <h4>Python Engineering</h4>
+</div>
+<div class="grid grid-2-640 projects">
+
+
+  <% python.select {|c| c.city == "Houston"}.each do |response| %>
+    <%= render :partial => "project", locals: {response: response} %>
+  <% end %>
+</div>
+<% end %>
+
+<% if mobile.select {|c| c.city == "Houston"}.empty? %>
+
+<% else %>
+<div class="page-break-before">
+    <h4>Mobile Development</h4>
+</div>
+<div class="grid grid-2-640 projects">
+
+
+  <% mobile.select {|c| c.city == "Houston"}.each do |response| %>
+    <%= render :partial => "project", locals: {response: response} %>
+  <% end %>
+</div>
+<% end %>
+<% end %>
+
+
+
+
+<h4 class="c hideable page-break-before"><%= "Houston " %>Staff Profiles</h4>
+
+  <%# staff.each do |staff| %>
+    <%# partial "staff", locals: {staff: staff} %>
+  <%# end %>
+
+
+
+<h4 class="c hideable page-break-before"><%= "Houston " %>Teaching Assistants</h4>
+
+  <%# ta.each do |ta| %>
+    <%# partial "ta", locals: {ta: ta} %>
+  <%# end %>
+
+<div class="last_page">
+<div class="c sponsor page-break-before">
+  <h4>Special Thanks to Our Sponsor</h4>
+    <%= image_tag "http://www.apexcareers.com/assets/img/Apex_Logo.png", class: 'sponsor' %><br>
+</div>
+
+
+<div class="c footer">
+
+    <%= image_tag "iron-yard-logo.svg", style: "preserveAspectRatio=MinYMin slice" %>
+
+</div>
+</div>

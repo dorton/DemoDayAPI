@@ -4,6 +4,7 @@ class StudentsController < InheritedResources::Base
     # GET /students.json
     def index
       @students = Student.all
+      
     end
 
     # GET /students/1

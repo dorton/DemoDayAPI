@@ -14,10 +14,10 @@ gem "grape-swagger-rails"
 gem "jquery-rails"
 gem "pg"
 gem "rack-cors", require: "rack/cors"
-gem "sass-rails"
+# gem "sass-rails"
 gem "uglifier", ">= 1.3.0"
 gem 'turbolinks'
-gem "twitter-bootstrap-rails"
+# gem "twitter-bootstrap-rails"
 
 group :production do
 

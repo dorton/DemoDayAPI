@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # resources :students, only: [:create, :new, :edit, :show, :update]
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -8,7 +9,12 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-root to: "admin/dashboard#index"
+root to: "handout#redirect"
+
+get 'c/houston/may2016.html' => 'handout#index'
+
+get 'demo_prints' => 'handout#demo_prints'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
