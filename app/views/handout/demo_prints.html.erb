@@ -1,4 +1,4 @@
-<% current_houston.each do |response| %>
+<% @students.each do |response| %>
 <div class="c project page-break-before">
   <h2>
     <div>
@@ -14,15 +14,15 @@
       <% end %>
     </div>
     <hr>
-  <h3><%= response.app_name.upcase %></h3>
+  <h3><%= response.project.app_name.upcase %></h3>
     <div class="table">
         <div>
-            <h5><%= link_to url_with_protocol(response.app_url), url_with_protocol(response.app_url), :target => '_blank' %></h5>
+            <h5><%= link_to url_with_protocol(response.project.app_url), url_with_protocol(response.project.app_url), :target => '_blank' %></h5>
         </div>
     </div>
-    <p class="hideable"><%= response.rationale %></p>
+    <p class="hideable"><%= response.project.rationale %></p>
     <h5 class="hideable">TECHNOLOGY USED</h5>
-    <p class="hideable"><%= response.tech_used.upcase %></p>
+    <p class="hideable"><%= response.project.tech_used.upcase %></p>
 
 </div>
 <% end %>

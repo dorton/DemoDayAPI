@@ -1,0 +1,7 @@
+<h1>Demo Days</h1>
+
+<% @cities.each do |city| %>
+      <ul>
+        <h5 class="c"><li><%= link_to city.name, city_path(city) %></h5></li>
+      </ul>
+<% end %>

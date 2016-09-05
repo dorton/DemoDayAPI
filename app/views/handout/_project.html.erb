@@ -5,19 +5,19 @@
             <span style="background-image: url(<%= response.profile_pic_link %>)">
         </div>
         <div>
-            <h5><%= response.app_name.upcase %></h5>
-            <h5><%= link_to url_with_protocol(response.app_url), url_with_protocol(response.app_url), :target => '_blank' %></h5>
+            <h5><%= response.project.app_name.upcase %></h5>
+            <h5><%= link_to url_with_protocol(response.project.app_url), url_with_protocol(response.project.app_url), :target => '_blank' %></h5>
 
         </div>
     </div>
 
     <p class="hideable"><%= response.bio %></p>
-    <p class="hideable"><%= response.rationale %></p>
+    <p class="hideable"><%= response.project.rationale %></p>
 
 
     <h5 class="hideable">TECHNOLOGY USED</h5>
 
-    <p class="hideable"><%= response.tech_used.upcase %></p>
+    <p class="hideable"><%= response.project.tech_used.upcase %></p>
 
       <div>
         <h6>Email Address: <%= mail_to response.email %></h6>

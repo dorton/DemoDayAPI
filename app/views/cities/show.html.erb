@@ -1,0 +1,18 @@
+<div class="c city_page">
+  <div class="city_container">
+    <div class="city_image">
+      <%= image_tag @image %>
+      <h1><span class="spacer"><%= @city.name %> Demo Days</span></h1>
+    </div>
+  </div>
+
+    <div class="cohorts">  <% @city.cohorts.order(:demo_day_date).each do |cohort| %>
+      <ul>
+        <h5><li><%= link_to cohort.demo_day_date.strftime('%B %d, %Y'), handout_path(cohort) %></h5></li>
+      </ul>
+      <% end %>
+    </div>
+  <div class="city_footer">
+  <%= image_tag 'iron-yard-logo.svg', class: "bottom" %>
+  </div>
+</div>

@@ -1,5 +1,4 @@
-
-
+<% @tas.sort_by {|lastname| lastname["name"].split(" ").last}.each do |ta| %>
 <div class="grid staff hideable page-break-inside">
     <div class="table">
         <div>
@@ -16,3 +15,4 @@
         </div>
     </div>
 </div>
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150810195129) do
+ActiveRecord::Schema.define(version: 20160904030925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,12 @@ ActiveRecord::Schema.define(version: 20150810195129) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "cities", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "cohorts", force: :cascade do |t|
     t.string   "city"
     t.datetime "created_at",    null: false
@@ -58,6 +64,23 @@ ActiveRecord::Schema.define(version: 20150810195129) do
     t.string   "venue_city"
     t.string   "venue_zip"
     t.date     "demo_day_date"
+    t.string   "slug"
+    t.integer  "city_id"
+  end
+
+  create_table "cohortstaffs", force: :cascade do |t|
+    t.integer  "staff_id"
+    t.integer  "cohort_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "cohortstaffs", ["cohort_id"], name: "index_cohortstaffs_on_cohort_id", using: :btree
+  add_index "cohortstaffs", ["staff_id"], name: "index_cohortstaffs_on_staff_id", using: :btree
+
+  create_table "names", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "projects", force: :cascade do |t|
@@ -72,6 +95,19 @@ ActiveRecord::Schema.define(version: 20150810195129) do
   end
 
   add_index "projects", ["cohort_id"], name: "index_projects_on_cohort_id", using: :btree
+
+  create_table "staffs", force: :cascade do |t|
+    t.string   "name"
+    t.string   "title"
+    t.string   "bio"
+    t.string   "pic"
+    t.integer  "cohort_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean  "ta"
+  end
+
+  add_index "staffs", ["cohort_id"], name: "index_staffs_on_cohort_id", using: :btree
 
   create_table "students", force: :cascade do |t|
     t.string   "name"
@@ -91,4 +127,7 @@ ActiveRecord::Schema.define(version: 20150810195129) do
   add_index "students", ["group_project"], name: "index_students_on_group_project", using: :btree
   add_index "students", ["project_id"], name: "index_students_on_project_id", using: :btree
 
+  add_foreign_key "cohortstaffs", "cohorts"
+  add_foreign_key "cohortstaffs", "staffs"
+  add_foreign_key "staffs", "cohorts"
 end

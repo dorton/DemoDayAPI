@@ -48,12 +48,51 @@ latin
 @import "./_colors.scss";
 @import "./_font.scss";
 
+
+.city_page {
+  position: absolute;
+  padding: 0em 0em;
+  top: 0px;
+  left: 0px;
+  margin-left: 1.25em;
+  margin-right: 1.25em;
+  height: 100%;
+}
+
+.city_container {
+  padding: 0em 0em;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+}
+.city_image {
+  h1 {
+    position: absolute;
+    bottom: -10px;
+    left: 35px;
+    color: #FFF;
+  }
+}
+
+.cohorts {
+  height: 45%;
+  padding-top: 2em;
+}
+
+.city_footer {
+  .bottom {
+    bottom: 1em;
+  }
+}
+
+
 html {
     border-left: 1em solid $iron-black;
     border-right: 1em solid $iron-black;
 }
 body {
-    padding: 5em 1em;
+    padding: 12em 1em;
     max-width: 1280px;
     margin: 0 auto;
 }
@@ -62,8 +101,8 @@ html::before, html::after {
     position: fixed;
     display: inline-block;
     width: 100%;
-    padding-top: 1em;
-    background-color: $iron-black;
+    border-top: .5em solid $iron-black;
+    border-bottom: .5em solid $iron-black;
     left: 0;
     z-index: 5;
     backface-visibility: hidden;
@@ -167,6 +206,11 @@ p + p {
  * --------------------
  * --------------------
  */
+
+ul {
+  list-style: none;
+}
+
 
 .sponsor {
   margin-bottom: 100px;

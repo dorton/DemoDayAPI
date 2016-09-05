@@ -1,5 +1,5 @@
 
-
+<% @staffs.sort_by {|lastname| lastname["name"].split(" ").last}.each do |staff| %>
 <div class="grid staff hideable page-break-inside">
     <div class="table">
         <div>
@@ -16,3 +16,4 @@
         </div>
     </div>
 </div>
+<% end %>
