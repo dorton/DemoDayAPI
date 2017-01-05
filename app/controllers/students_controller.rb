@@ -32,12 +32,13 @@ class StudentsController < InheritedResources::Base
     # POST /students.json
     def create
       @project = Project.find params[:project_id]
+      @cohort = Cohort.find_by_slug params[:cohort_id]
       @student = @project.students.create(student_params)
 
       if @student.save
-          redirect_to project_path(@project), notice: 'Student was successfully created.'
+          redirect_to project_student_path(@project, @student), notice: 'Student was successfully created.'
         else
-          redirect_to project_path(@project), notice: 'Something went wrong.'
+          redirect_to root_path notice: 'Something went wrong.'
       end
     end
 
@@ -60,7 +61,7 @@ class StudentsController < InheritedResources::Base
       @project = Project.find params[:project_id]
       @student = @project.students.find params[:id]
       @student.destroy
-        redirect_to city_path(@project), notice: 'Student was successfully destroyed.'
+        redirect_to root_path, notice: 'Student was successfully destroyed.'
     end
 
 
