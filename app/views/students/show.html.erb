@@ -5,7 +5,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 <% end %>
 <div class="center">
-  <%= image_tag @student.profile_pic_link, class:"responsive-img circle" %>
+  <%= image_tag @student.profile_pic_link, class:"responsive-img circle", id:"profile" %>
 </div>
 
 <div class="row">
@@ -23,6 +23,9 @@
 </div>
 <div class="row center">
   <em>Github: <%= @student.github_url %></em>
+</div>
+<div class="row center">
+  <em>Bio: <br> <%= @student.bio %></em>
 </div>
 
 <div class="row center">
