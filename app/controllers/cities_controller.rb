@@ -7,7 +7,7 @@ end
 
 
 def show
-  @city = City.find params[:id]
+  @city = City.find_by_slug params[:id]
 
   if ["Austin", "Houston"].include? @city.name
     @image = "https://www.theironyard.com/content/dam/theironyard/locations/#{@city.name.downcase}/header_#{@city.name.downcase}.jpg"

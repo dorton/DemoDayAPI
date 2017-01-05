@@ -14,6 +14,7 @@ gem "grape-swagger-rails"
 gem "jquery-rails"
 gem "pg"
 gem "rack-cors", require: "rack/cors"
+gem "simple_form"
 # gem "sass-rails"
 gem "uglifier", ">= 1.3.0"
 gem 'turbolinks'

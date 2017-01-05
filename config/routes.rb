@@ -9,15 +9,28 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-root to: "handout#redirect"
+    root to: "cities#index"
 
-# get '/c/houston/may2016.html', to: 'handout#index'
+get '/c/houston/may2016.html', to: 'handout#index'
+
+resources :cohorts do
+  resources :projects
+end
+
+resources :projects do
+  resources :students
+end
+
+
+get '/:city/:cohort/students/new', to: 'students#new', as: 'new_student'
+post	'/:city/:cohort/students', to:	'students#create', as: 'create_student'
+
 
 get 'demo_prints/:id', to: 'handout#demo_prints', as: 'print'
 
 get '/c', to: 'cities#index', as: 'cities'
 get '/c/:id', to: 'cities#show', as: 'city'
-get '/c/city/:id', to: 'handout#index', as: 'handout'
+get '/c/:city/:id', to: 'handout#index', as: 'handout'
 
 
 end

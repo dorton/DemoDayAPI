@@ -4,12 +4,12 @@ require 'faker'
 
 
 ["Houston", "Austin", "San Antonio", "Dallas", "Las Vegas", "Salt Lake City"].each do |name|
-  City.create! name: name
+  City.create! name: name, slug: name.downcase.split.join
 end
 
 ["July 24, 2015", "September 4, 2015", "April 14, 2016", "September 2, 2016"].each do |date|
   City.all.each do |city|
-    Cohort.create! city_id: city.id, demo_day_date: date, slug: "#{city.name.downcase.gsub(" ", "-")}-#{date.to_date.strftime('%b%Y').downcase}"
+    Cohort.create! city_id: city.id, demo_day_date: date, slug: "#{city.name.downcase.first(3)}_#{date.to_date.strftime('%b%Y').downcase}"
   end
 end
 

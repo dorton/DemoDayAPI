@@ -1,0 +1,11 @@
+<%= simple_form_for ([@project, @student]) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :course, collection: ["Front End Engineering", ".NET Back End Engineering", "Mobile Engineering", "UI"] %>
+  <%= f.input :email %>
+  <%= f.input :portfolio_url %>
+  <%= f.input :github_url %>
+  <%= f.input :profile_pic_link %>
+  <%= f.input :bio, input_html: { maxlength: 20 } %>
+  <%= f.button :submit %>
+
+<% end %>
