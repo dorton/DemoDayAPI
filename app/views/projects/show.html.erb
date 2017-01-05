@@ -1,0 +1,68 @@
+
+<% content_for :head do %>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+<% end %>
+
+
+<div class="container">
+
+    <div class="row">
+      <div class="left-align">
+        <h1><%= @project.app_name %></h1>
+        <h3><%= @project.app_url %></h3>
+      </div>
+    </div>
+    <div class="row center">
+      <h5>Rationale:</h5>
+      <p><%= @project.rationale %></p>
+    </div>
+    <div class="row center">
+      <h5>Tech:</h5>
+      <p><%= @project.tech_used %></p>
+    </div>
+    <div class="row">
+      <% if @project.students.present? %>
+        <ul class="collection with-header">
+          <li class="collection-header"><h5>Students on Project</h5></li>
+          <% @project.students.each do |student| %>
+            <li class="collection-item"><%= link_to student.name, project_student_path(@project, student) %></li>
+          <% end %>
+        </ul>
+        <% end %>
+    </div>
+    <div class="row">
+      <%= link_to "Edit Project", edit_cohort_project_path(@cohort, @project), class: "btn btn-primary" %>
+    </div>
+
+<div class="divider"></div>
+    <div class="row">
+      <h5>Add Student to Project</h5>
+    </div>
+
+    <div class="row">
+      <div class="col s12 l8">
+        <%= simple_form_for([@project, @project.students.build]) do |f| %>
+          <%= f.error_notification %>
+
+          <div class="form-inputs">
+            <%= f.input :name %>
+            <%= f.input :course, collection: ["Front End Engineering", ".NET Back End Engineering", "Mobile Engineering", "UI"] %>
+            <%= f.input :email %>
+            <%= f.input :portfolio_url %>
+            <%= f.input :github_url %>
+            <%= f.input :profile_pic_link %>
+            <%= f.input :bio, input_html: { maxlength: 100 } %>
+
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, "Add Student" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+</div>

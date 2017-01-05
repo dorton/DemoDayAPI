@@ -1,0 +1,92 @@
+<div class="grid grid-2-640">
+    <div class="vslide c">
+        <h1 class="tera">Demo
+            <br>Day</h1>
+        <h3><%= "The Iron Yard"%></h3>
+      <p> <%= @cohort.demo_day_date.strftime('%b %d, %Y') %> </p>
+
+
+
+        <%= image_tag "iron-yard-logo.svg", style: "preserveAspectRatio=MinYMin slice" %>
+        <br>
+        <br>
+        <h3><%= @cohort.city.name %></h3>
+    </div>
+
+    <div class="vslide">
+        <h4>About The Iron Yard</h4>
+
+        <p>The Iron Yard teaches intensive, three-month courses that mentor students into professional junior-level
+          programmers. Our program goes far beyond tactical skills and teaches students to think like a software engineer.
+          Students have spent the past twelve weeks studying <%= @courses.to_sentence %> and
+          today they will present their final projects, which showcase the skills they have learned.</p>
+
+        <%= image_tag "#{@image}", :class => "about-img about-container" %>
+
+    </div>
+</div>
+
+<div class="grid">
+    <div>
+        <h4 class="hideable">Interested in hiring a graduate?</h4>
+
+        <p class="hideable"> <%= "All of our graduates are ready for their first jobs as junior developers. If you meet someone who
+        would be a great fit for your team, please feel free to reach out to them directly. Graduates' contact info can be found here.
+        If you have questions or want more information about how our job placement program works, get in touch with the houston team
+        at "%><%= mail_to "#{@email}@theironyard.com" %>.</p>
+
+
+    </div>
+</div>
+
+<div class="grid hideable page-break-after">
+    <div>
+        <h4>Interested in taking a class or learning more?</h4>
+
+        <p>Our next classes begin <%= (@cohort.demo_day_date + 4.weeks - 4.days).strftime('%B %d, %Y') %>. We are accepting applications now. Applications can be found on our website:
+          <a href="http://theironyard.com/apply" target="_blank">theironyard.com/apply</a>. We also offer free classes for kids
+          and host a variety of meet-ups and free events. For more information on any of these programs, visit our website or
+          email <%= mail_to "#{@email}@theironyard.com" %>.</p>
+
+    </div>
+</div>
+
+
+<div>
+  <h3>The <%= @cohort.city.name %> Developers</h3>
+</div>
+
+<% @courses.each do |course| %>
+  <div class="page-break-after">
+      <h4><%= course %></h4>
+  </div>
+  <div class="grid grid-2-640 projects">
+    <% @cohort.students.where(course: course).sort_by {|lastname| lastname["name"].split(" ").last}.each do |response| %>
+      <%= render :partial => "project", locals: {response: response} %>
+    <% end %>
+  </div>
+<% end %>
+
+
+
+<h4 class="c hideable page-break-before"><%= @cohort.city.name %> Staff Profiles</h4>
+
+    <%= render "staff" %>
+
+<h4 class="c hideable page-break-before"><%= @cohort.city.name %> Teaching Assistants</h4>
+
+    <%= render "ta" %>
+
+<div class="last_page">
+<div class="c sponsor page-break-before">
+  <h4>Special Thanks to Our Sponsor</h4>
+    <%= image_tag "http://www.apexcareers.com/assets/img/Apex_Logo.png", class: 'sponsor' %><br>
+</div>
+
+
+<div class="c footer">
+
+    <%= image_tag "iron-yard-logo.svg", style: "preserveAspectRatio=MinYMin slice" %>
+
+</div>
+</div>

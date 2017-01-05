@@ -1,0 +1,11 @@
+<div>
+  <h1 class="c">All Cohorts</h1>
+  <% @cohorts.group_by(&:city).each do |city, cohorts| %>
+    <h2><%= link_to city.name, city_path(cohorts.last) %> Demo Day Dates:</h2>
+      <% cohorts.each do |cohort| %>
+        <ul>
+          <h5 class="c"><li><%= link_to cohort.demo_day_date.strftime('%B %d, %Y'), cohort_path(cohort) %> / <%= link_to "Display Print", print_path(cohort) %></h5></li>
+        </ul>
+      <% end %>
+  <% end %>
+</div>

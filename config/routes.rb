@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # resources :students, only: [:create, :new, :edit, :show, :update]
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -8,54 +9,28 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-root to: "admin/dashboard#index"
+    root to: "cities#index"
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+get '/c/houston/may2016.html', to: 'handout#index'
 
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+resources :cohorts do
+  resources :projects
+end
 
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+resources :projects do
+  resources :students
+end
 
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
 
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
+get '/:city/:cohort/students/new', to: 'students#new', as: 'new_student'
+post	'/:city/:cohort/students', to:	'students#create', as: 'create_student'
 
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
 
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
+get 'demo_prints/:id', to: 'handout#demo_prints', as: 'print'
 
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+get '/c', to: 'cities#index', as: 'cities'
+get '/c/:id', to: 'cities#show', as: 'city'
+get '/c/:city/:id', to: 'handout#index', as: 'handout'
+
+
 end
