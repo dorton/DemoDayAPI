@@ -5,7 +5,7 @@
   <%= f.input :portfolio_url %>
   <%= f.input :github_url %>
   <%= f.input :profile_pic_link %>
-  <%= f.input :bio, input_html: { maxlength: 762 } %>
+  <%= f.input :bio, as: :text, input_html: { maxlength: 762 }, id: "textarea1", class: "materialize-textarea" %>
   <%= f.button :submit %>
 
 <% end %>

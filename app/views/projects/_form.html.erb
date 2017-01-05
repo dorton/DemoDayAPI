@@ -13,7 +13,7 @@
     <div class="form-inputs">
       <%= f.input :app_name%>
       <%= f.input :app_url%>
-      <%= f.input :rationale, input_html: { maxlength: 762 } %>
+      <%= f.input :rationale, as: :text, input_html: { maxlength: 762 }, id: "textarea1", class: "materialize-textarea" %>
       <%= f.input :tech_used%>
 
     </div>
