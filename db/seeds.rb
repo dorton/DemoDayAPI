@@ -1,6 +1,6 @@
 # AdminUser.create! email: "brian.dorton@theironyard.com", password: "12345678", password_confirmation: "12345678"
 
-require 'faker'
+# require 'faker'
 
 
 # ["Houston", "Austin", "San Antonio", "Dallas", "Las Vegas", "Salt Lake City"].each do |name|
