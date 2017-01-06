@@ -43,7 +43,7 @@
     <div>
         <h4>Interested in taking a class or learning more?</h4>
 
-        <p>Our next classes begin <%= (@cohort.demo_day_date + 4.weeks - 4.days).strftime('%B %d, %Y') %>. We are accepting applications now. Applications can be found on our website:
+        <p>Our next classes begin January 30. We are accepting applications now. Applications can be found on our website:
           <a href="http://theironyard.com/apply" target="_blank">theironyard.com/apply</a>. We also offer free classes for kids
           and host a variety of meet-ups and free events. For more information on any of these programs, visit our website or
           email <%= mail_to "#{@email}@theironyard.com" %>.</p>
@@ -80,8 +80,9 @@
 <div class="last_page">
 <div class="c sponsor page-break-before">
   <h4>Special Thanks For Hosting</h4>
-    <%= image_tag "https://i0.wp.com/staging.stationhouston.com/wp-content/uploads/2016/10/Copy-of-STATION-logo-breakout-stacked-red.png?w=100", class: 'sponsor', id: 'sponsor_size' %><br>
-
+   <div class="sponsor" id="sponsor_size">
+    <%= image_tag "https://i0.wp.com/staging.stationhouston.com/wp-content/uploads/2016/10/Copy-of-STATION-logo-breakout-stacked-red.png?w=100" %><br>
+  </div>
 </div>
 
 
