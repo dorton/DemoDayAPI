@@ -1,11 +1,11 @@
 <% @students.each do |response| %>
 <div class="c project page-break-before">
-  <h2>
+  <h5>
     <div>
         <span style="background-image: url(<%= response.profile_pic_link %>)">
     </div><br>
     <%= response.name.upcase %>
-  </h2>
+  </h5>
     <div>
       <h6>Email Address: <%= mail_to response.email %></h6>
       <h6>GitHub Username: <%= link_to (url_with_protocol(response.github_url) || "").split("/")[3], url_with_protocol(response.github_url), :target => '_blank' %></h6>
@@ -14,7 +14,7 @@
       <% end %>
     </div>
     <hr>
-  <h3><%= response.project.app_name.upcase %></h3>
+  <h5><%= response.project.app_name.upcase %></h5>
     <div class="table">
         <div>
             <h5><%= link_to url_with_protocol(response.project.app_url), url_with_protocol(response.project.app_url), :target => '_blank' %></h5>

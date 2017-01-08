@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="min">
+  <head>
+    <meta charset="utf-8">
+    <title>Demo Day | The Iron Yard Houston</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <%= csrf_meta_tags %>
+
+    <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= yield :head %>
+  </head>
+  <div class="body-print">
+    <%= yield %>
+
+  </div>
+</html>

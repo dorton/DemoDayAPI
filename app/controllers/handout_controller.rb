@@ -1,4 +1,6 @@
 class HandoutController < ApplicationController
+  layout :resolve_layout
+
   def redirect
   end
 
@@ -44,4 +46,17 @@ class HandoutController < ApplicationController
     @cohort = Cohort.find_by_slug params[:id]
     @students = @cohort.students
   end
+
+  private
+
+  def resolve_layout
+    case action_name
+    when "demo_prints"
+      "print"
+    else
+      "application"
+    end
+  end
+
+
 end
