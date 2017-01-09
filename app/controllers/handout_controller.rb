@@ -47,6 +47,12 @@ class HandoutController < ApplicationController
     @students = @cohort.students
   end
 
+  def houston
+    @city = City.find_by_slug("houston")
+    @last_houston_cohort = Cohort.joins(:city).where("cities.name = ?", "Houston").last
+    redirect_to handout_path(@city.slug, @last_houston_cohort)
+  end
+
   private
 
   def resolve_layout
