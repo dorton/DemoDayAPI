@@ -18,6 +18,7 @@
     <%= yield :head %>
   </head>
   <body style="">
+      <%= link_to('Logout', destroy_admin_user_session_path, :method => :delete, class: 'btn') if admin_user_signed_in? %>
       <%= yield %>
   </body>
 </html>
