@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   # resources :students, only: [:create, :new, :edit, :show, :update]
-  devise_for :admin_users, ActiveAdmin::Devise.config
+  devise_for :admin_users
   ActiveAdmin.routes(self)
   mount API::Base, at: "/"
   mount GrapeSwaggerRails::Engine, at: "/documentation"
