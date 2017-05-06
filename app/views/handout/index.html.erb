@@ -43,7 +43,7 @@
     <div>
         <h4>Interested in taking a class or learning more?</h4>
 
-        <p>Our next classes begin January 30. We are accepting applications now. Applications can be found on our website:
+        <p>Our next classes begin May 22. We are accepting applications now. Applications can be found on our website:
           <a href="http://theironyard.com/apply" target="_blank">theironyard.com/apply</a>. We also offer free classes for kids
           and host a variety of meet-ups and free events. For more information on any of these programs, visit our website or
           email <%= mail_to "#{@email}@theironyard.com" %>.</p>
@@ -81,14 +81,18 @@
 <div class="c sponsor page-break-before">
   <h4>Special Thanks For Hosting</h4>
    <div class="sponsor" id="sponsor_size">
-    <%= image_tag "http://www.tmc.edu/innovation/wp-content/uploads/sites/4/2016/04/tmcx-logo.png" %><br>
+     <%= link_to "http://www.tmc.edu/innovation", target: '_blank' do %>
+       <%= image_tag "http://www.tmc.edu/innovation/wp-content/uploads/sites/4/2016/04/tmcx-logo.png" %>
+     <% end %>
+    <br>
   </div>
 </div>
 
 
 <div class="c footer">
-
+   <%= link_to "http://theironyard.com/houston", target: '_blank' do %>
     <%= image_tag "iron-yard-logo.svg", style: "preserveAspectRatio=MinYMin slice" %>
+  <% end %>
 
 </div>
 </div>
