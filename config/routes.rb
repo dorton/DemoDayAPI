@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # resources :students, only: [:create, :new, :edit, :show, :update]
   devise_for :admin_users
-  ActiveAdmin.routes(self)
+ # ActiveAdmin.routes(self)
   mount API::Base, at: "/"
   mount GrapeSwaggerRails::Engine, at: "/documentation"
   # The priority is based upon order of creation: first created -> highest priority.
@@ -13,6 +14,13 @@ Rails.application.routes.draw do
     root to: "handout#houston"
 
 get '/c/houston/may2016.html', to: 'handout#index'
+
+namespace :api do
+  namespace :v2 do
+    resources :students
+  end
+
+end
 
 resources :cohorts do
   resources :projects
